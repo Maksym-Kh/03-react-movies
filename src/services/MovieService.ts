@@ -1,4 +1,4 @@
-import apiClient from "../api/api";
+import apiClient from "../components/api/api";
 import type { Movie } from "../types/movie";
 
 
