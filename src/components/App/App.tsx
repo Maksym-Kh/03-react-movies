@@ -37,10 +37,8 @@ export default function App() {
                 setIsError(false);
                 const data = await FetchMovies({ query });
 
-                setIsLoading(false);
                 
                 if (!data || data.length === 0) {
-                    toast.dismiss();
                     toast.error('No movies found for your request.');
                     setMovies([]);
                     return;
@@ -52,7 +50,7 @@ export default function App() {
                 setIsError(true);
             }
             finally {
-        setIsLoading(false);
+                setIsLoading(false);
             }
         }
         getMovies();
@@ -62,9 +60,7 @@ export default function App() {
     const openModal = (movie: Movie) => setSelectedMovie(movie);
     const closeModal = () => setSelectedMovie(null);
 
-    return ( 
-
-        
+    return (
         <>
             <Toaster position="top-right" />
 
@@ -73,7 +69,7 @@ export default function App() {
             {movies.length > 0 && <MovieGrid onSelect={openModal} movies={movies} />}
             {isLoading === true && <Loader />}
             {isError === true && <ErrorMessage />}
-            {selectedMovie && <MovieModal onClose={closeModal} movie={selectedMovie}/>}
-</>
-    )
+            {selectedMovie && <MovieModal onClose={closeModal} movie={selectedMovie} />}
+        </>
+    );
 }
